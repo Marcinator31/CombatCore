@@ -1,0 +1,73 @@
+# ============================================================
+#  CombatCore configuration
+#  Colours use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+#  After editing, run:  /combatcore reload
+# ============================================================
+
+combat:
+  # How long (in seconds) a player stays in combat after fighting.
+  duration-seconds: 15
+
+  # Tag the attacker when they deal damage to a player.
+  tag-on-damage-dealt: true
+  # Tag the victim when they receive damage from a player.
+  tag-on-damage-received: true
+
+  # If true, only player-vs-player combat applies a tag.
+  # If false, taking damage from mobs also tags the player.
+  pvp-only: true
+
+  # Kill players who log out while in combat (their items drop).
+  punish-on-logout: true
+  # Announce combat-log deaths to the whole server.
+  broadcast-logout-death: true
+
+blocked:
+  # Commands blocked while in combat. List WITHOUT the leading slash.
+  # Plugin namespaces (e.g. essentials:rtp) are matched automatically.
+  commands:
+    - rtp
+    - wild
+    - tpa
+    - tpahere
+    - home
+    - spawn
+    - warp
+    - back
+
+  # Items blocked from being used (right-click) while in combat.
+  # Use Bukkit Material names (UPPERCASE). Full list:
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+  items:
+    - TRIDENT
+    - CHORUS_FRUIT
+
+  # Dedicated toggles (kept separate because they aren't simple right-clicks):
+  # Prevent starting to fly with an elytra while in combat.
+  elytra: true
+  # Block ender pearl throws while in combat.
+  ender-pearl: false
+
+display:
+  action-bar:
+    # Show the combat countdown above the hotbar.
+    enabled: true
+    # <time> is replaced with the remaining seconds.
+    format: "<red>\u2694 Combat: <yellow><time>s</yellow> \u2694</red>"
+  boss-bar:
+    # (Reserved) Show a boss bar instead of / in addition to the action bar.
+    enabled: false
+    color: RED
+
+messages:
+  prefix: "<dark_red>[Combat]</dark_red> "
+  now-in-combat: "<red>You are now in combat! Do not log out.</red>"
+  left-combat: "<green>You are no longer in combat.</green>"
+  command-blocked: "<red>You cannot use this command while in combat!</red>"
+  item-blocked: "<red>You cannot use this item while in combat!</red>"
+  region-blocked: "<red>You cannot enter this area while in combat!</red>"
+  logout-punish: "<dark_red><player> logged out in combat and was slain!</dark_red>"
+
+# Set to true to print to console exactly which commands are blocked/allowed
+# while in combat. Use this to verify the blocker is working, then turn it off.
+debug: false
